@@ -26,6 +26,8 @@
     return context;
 }
 
+#pragma mark - View loading
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -37,6 +39,7 @@
     
     [self.tableView reloadData];
 }
+
 
 
 - (id)initWithStyle:(UITableViewStyle)style

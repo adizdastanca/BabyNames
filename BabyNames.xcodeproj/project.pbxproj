@@ -92,15 +92,12 @@
 		FC42D12818A4025C0020CBB7 /* BabyNames */ = {
 			isa = PBXGroup;
 			children = (
+				FC60AEA818A51CE000F775C0 /* View Controllers */,
 				FC42D13118A4025C0020CBB7 /* AppDelegate.h */,
 				FC42D13218A4025C0020CBB7 /* AppDelegate.m */,
 				FC42D13A18A4025C0020CBB7 /* BabyNames.xcdatamodeld */,
 				FC42D14218A403350020CBB7 /* Storyboard.storyboard */,
 				FC42D12918A4025C0020CBB7 /* Supporting Files */,
-				FC42D14418A40C670020CBB7 /* BabyNamesViewController.h */,
-				FC42D14518A40C670020CBB7 /* BabyNamesViewController.m */,
-				FC3C441E18A435F80009FADE /* BabyNamesFormViewController.h */,
-				FC3C441F18A435F90009FADE /* BabyNamesFormViewController.m */,
 			);
 			path = BabyNames;
 			sourceTree = "<group>";
@@ -117,6 +114,17 @@
 				FC42D13818A4025C0020CBB7 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC60AEA818A51CE000F775C0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC42D14418A40C670020CBB7 /* BabyNamesViewController.h */,
+				FC42D14518A40C670020CBB7 /* BabyNamesViewController.m */,
+				FC3C441E18A435F80009FADE /* BabyNamesFormViewController.h */,
+				FC3C441F18A435F90009FADE /* BabyNamesFormViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

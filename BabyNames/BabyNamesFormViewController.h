@@ -13,4 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *last_nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
+@property (weak, nonatomic) IBOutlet UITextField *address;
+
+@property (weak, nonatomic) IBOutlet UILabel *latitude;
+@property (weak, nonatomic) IBOutlet UILabel *longitude;
+
 @end

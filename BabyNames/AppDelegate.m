@@ -8,11 +8,34 @@
 
 #import "AppDelegate.h"
 
+// Ensure that any observations about NSManagedObjectContexts being saved
+// are merged with the main thread's context ON THE MAIN THREAD. The
+// notifications are not guaranteed to be delivered on any given thread.
+
+static dispatch_queue_t contextMergingDispatchQueue = nil;
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+- (void)mergeContextDidSaveOnMainThread:(NSNotification *)notification
+{
+    dispatch_async(contextMergingDispatchQueue, ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+        });
+    });
+    
+}
+
++ (void)initialize
+{
+    if (self == [AppDelegate class]) {
+        contextMergingDispatchQueue = dispatch_queue_create("com.apexbikeperformance.cdmergequeue", NULL);
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -76,6 +99,12 @@
         _managedObjectContext = [[NSManagedObjectContext alloc] init];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(mergeContextDidSaveOnMainThread:)
+                                                 name:NSManagedObjectContextDidSaveNotification
+                                               object:nil];
+    
     return _managedObjectContext;
 }
 
