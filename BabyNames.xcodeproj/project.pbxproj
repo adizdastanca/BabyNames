@@ -21,6 +21,7 @@
 		FC42D13C18A4025C0020CBB7 /* BabyNames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC42D13A18A4025C0020CBB7 /* BabyNames.xcdatamodeld */; };
 		FC42D14318A403350020CBB7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC42D14218A403350020CBB7 /* Storyboard.storyboard */; };
 		FC42D14618A40C670020CBB7 /* BabyNamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC42D14518A40C670020CBB7 /* BabyNamesViewController.m */; };
+		FC60AEAB18A5456F00F775C0 /* NSDictionary+ParseJson.m in Sources */ = {isa = PBXBuildFile; fileRef = FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		FC42D14218A403350020CBB7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		FC42D14418A40C670020CBB7 /* BabyNamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyNamesViewController.h; sourceTree = "<group>"; };
 		FC42D14518A40C670020CBB7 /* BabyNamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyNamesViewController.m; sourceTree = "<group>"; };
+		FC60AEA918A5456F00F775C0 /* NSDictionary+ParseJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ParseJson.h"; sourceTree = "<group>"; };
+		FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ParseJson.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				FC42D13A18A4025C0020CBB7 /* BabyNames.xcdatamodeld */,
 				FC42D14218A403350020CBB7 /* Storyboard.storyboard */,
 				FC42D12918A4025C0020CBB7 /* Supporting Files */,
+				FC60AEA918A5456F00F775C0 /* NSDictionary+ParseJson.h */,
+				FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */,
 			);
 			path = BabyNames;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 			files = (
 				FC42D12F18A4025C0020CBB7 /* main.m in Sources */,
 				FC42D13318A4025C0020CBB7 /* AppDelegate.m in Sources */,
+				FC60AEAB18A5456F00F775C0 /* NSDictionary+ParseJson.m in Sources */,
 				FC42D13C18A4025C0020CBB7 /* BabyNames.xcdatamodeld in Sources */,
 				FC42D14618A40C670020CBB7 /* BabyNamesViewController.m in Sources */,
 				FC3C442018A435F90009FADE /* BabyNamesFormViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "BabyNamesFormViewController.h"
 #import "AppDelegate.h"
+#import "NSDictionary+ParseJson.h"
 
 @interface BabyNamesFormViewController ()
 @property (strong, nonatomic) NSManagedObjectContext *context;
@@ -17,7 +18,10 @@
 
 @implementation BabyNamesFormViewController
 
-- (NSManagedObjectContext *)managedObjectContext {
+@synthesize editName;
+
+- (NSManagedObjectContext *)managedObjectContext
+{
     NSManagedObjectContext *context = nil;
     id delegate = [[UIApplication sharedApplication] delegate];
     if ([delegate performSelector:@selector(managedObjectContext)]) {
@@ -26,19 +30,33 @@
     return context;
 }
 
-- (IBAction)cancel:(UIBarButtonItem *)sender {
+- (IBAction)cancel:(UIBarButtonItem *)sender
+{
     NSLog(@"cancel pressed:");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-- (IBAction)save:(UIBarButtonItem *)sender {
+- (IBAction)save:(UIBarButtonItem *)sender
+{
     NSLog(@"save pressed:");
-    //NSManagedObjectContext *context = [self managedObjectContext];
+//    NSManagedObjectContext *context = [self managedObjectContext];
     
-    // Create a new managed object
-    [self.person setValue:self.first_nameTextField.text forKey:@"first_name"];
-    [self.person setValue:self.last_nameTextField.text forKey:@"last_name"];
-    [self.person setValue:self.nameTextField.text forKey:@"name"];
+    if (self.editName) {
+        [self.editName setValue:self.first_nameTextField.text forKey:@"first_name"];
+        [self.editName setValue:self.middle_nameTextField forKey:@"middle_name"];
+        [self.editName setValue:self.last_nameTextField forKey:@"last_name"];
+    } else {
+        // Create a new managed object
+        NSManagedObject *newName = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:self.context];
+        [newName setValue:self.first_nameTextField.text forKey:@"first_name"];
+        [newName setValue:self.middle_nameTextField.text forKey:@"middle_name"];
+        [newName setValue:self.last_nameTextField.text forKey:@"last_name"];
+    }
     
+    
+    
+    
+    //work with webservice
+    /*
     [self.context save:nil];
     
     //populate latitude and longitude
@@ -49,9 +67,24 @@
         NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
         context.persistentStoreCoordinator = [appDelegate persistentStoreCoordinator];
         NSLog(@"test");
+        
+        
+        
+        NSURL *url = [[NSURL alloc] initWithString:@"https://maps.googleapis.com/maps/api/geocode/json?address=london&sensor=false"];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        //NSLog(@"%@", json);
+        
+        
+        NSNumber *myLatitude = [json giveMeLatitude];
+        NSNumber *myLongitude = [json giveMeLongitude];
+        
+        
         NSManagedObject *baby = [context objectWithID:mid];
-        [baby setValue:@123 forKey:@"latitude"];
-        [baby setValue:@987 forKey:@"longitude"];
+        [baby setValue:myLatitude forKey:@"latitude"];
+        [baby setValue:myLongitude forKey:@"longitude"];
         
         NSError *error = nil;
         if (![context save:&error]) {
@@ -59,16 +92,16 @@
         }
         //[context save:nil];
     });
+     */
     
-    /*
     NSError *error = nil;
     // Save the object to persistent store
-    if (![context save:&error]) {
+    if (![self.context save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
-     */
+
     
 }
 
@@ -89,32 +122,6 @@
     [self.person removeObserver:self forKeyPath:@"longitude"];
 }
 
-/*
-- (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
- */
-
-/*
-- (IBAction)save:(id)sender {
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    // Create a new managed object
-    NSManagedObject *newDevice = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:context];
-    [newDevice setValue:self.first_nameTextField.text forKey:@"first_name"];
-    [newDevice setValue:self.last_nameTextField.text forKey:@"last_name"];
-    [newDevice setValue:self.nameTextField.text forKey:@"name"];
-    
-    NSError *error = nil;
-    // Save the object to persistent store
-    if (![context save:&error]) {
-        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
- */
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -131,9 +138,16 @@
 	// Do any additional setup after loading the view.
     id delegate = [[UIApplication sharedApplication] delegate];
     self.context = [delegate performSelector:@selector(managedObjectContext)];
+    /*
     self.person = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:self.context];
     [self.person addObserver:self forKeyPath:@"latitude" options:NSKeyValueObservingOptionNew context:nil];
     [self.person addObserver:self forKeyPath:@"longitude" options:NSKeyValueObservingOptionNew context:nil];
+    */
+    if (self.editName) {
+        [self.first_nameTextField setText:[self.editName valueForKey:@"first_name"]];
+        [self.middle_nameTextField setText:[self.editName valueForKey:@"middle_name"]];
+        [self.last_nameTextField setText:[self.editName valueForKey:@"last_name"]];
+    }
 
 }
 

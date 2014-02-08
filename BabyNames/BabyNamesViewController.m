@@ -7,6 +7,7 @@
 //
 
 #import "BabyNamesViewController.h"
+#import "BabyNamesFormViewController.h"
 
 @interface BabyNamesViewController ()
 
@@ -24,6 +25,16 @@
         context = [delegate managedObjectContext];
     }
     return context;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"UpdateName"]) {
+        NSManagedObject *selectedName = [self.names objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        BabyNamesFormViewController *formViewController = segue.destinationViewController;
+        formViewController.editName = selectedName;
+        
+    }
 }
 
 #pragma mark - View loading
@@ -93,34 +104,46 @@
     // Configure the cell...
 
     NSManagedObject *name = [self.names objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@ %@", [name valueForKey:@"first_name"], [name valueForKey:@"last_name"]]];
-    [cell.detailTextLabel setText:[name valueForKey:@"name"]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@ %@", [name valueForKey:@"first_name"], [name valueForKey:@"middle_name"]]];
+    [cell.detailTextLabel setText:[name valueForKey:@"last_name"]];
 
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        [context deleteObject:[self.names objectAtIndex:indexPath.row]];
+        NSError *error = nil;
+        if (![context save:&error]) {
+            NSLog(@"cant delete %@", error);
+        }
+        
+        [self.names removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationFade];
+        /*
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         */
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

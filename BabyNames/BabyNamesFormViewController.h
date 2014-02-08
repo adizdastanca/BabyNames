@@ -10,12 +10,12 @@
 
 @interface BabyNamesFormViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *first_nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *middle_nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *last_nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-
-@property (weak, nonatomic) IBOutlet UITextField *address;
 
 @property (weak, nonatomic) IBOutlet UILabel *latitude;
 @property (weak, nonatomic) IBOutlet UILabel *longitude;
+
+@property (strong) NSManagedObject *editName;
 
 @end
