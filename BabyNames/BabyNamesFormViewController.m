@@ -42,8 +42,8 @@
     
     if (self.editName) {
         [self.editName setValue:self.first_nameTextField.text forKey:@"first_name"];
-        [self.editName setValue:self.middle_nameTextField forKey:@"middle_name"];
-        [self.editName setValue:self.last_nameTextField forKey:@"last_name"];
+        [self.editName setValue:self.middle_nameTextField.text forKey:@"middle_name"];
+        [self.editName setValue:self.last_nameTextField.text forKey:@"last_name"];
     } else {
         // Create a new managed object
         NSManagedObject *newName = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:self.context];
