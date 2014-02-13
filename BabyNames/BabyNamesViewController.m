@@ -8,6 +8,7 @@
 
 #import "BabyNamesViewController.h"
 #import "BabyNamesFormViewController.h"
+#import "BabyNamesDetailViewController.h"
 
 @interface BabyNamesViewController ()
 
@@ -29,11 +30,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"UpdateName"]) {
+    if ([[segue identifier] isEqualToString:@"DetailName"]) {
         NSManagedObject *selectedName = [self.names objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
-        BabyNamesFormViewController *formViewController = segue.destinationViewController;
-        formViewController.editName = selectedName;
-        
+        BabyNamesDetailViewController *detailViewController = segue.destinationViewController;
+        detailViewController.detailName = selectedName;
     }
 }
 

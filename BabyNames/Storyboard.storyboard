@@ -15,11 +15,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="onY-2H-B15" detailTextLabel="f3t-z1-QMx" style="IBUITableViewCellStyleValue1" id="clt-Dq-chV">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="onY-2H-B15" detailTextLabel="f3t-z1-QMx" style="IBUITableViewCellStyleValue1" id="clt-Dq-chV">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="onY-2H-B15">
@@ -30,7 +30,7 @@
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f3t-z1-QMx">
-                                            <rect key="frame" x="266" y="11" width="44" height="21"/>
+                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,7 +42,7 @@
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <segue destination="Z8z-LQ-WS9" kind="modal" identifier="UpdateName" id="EqQ-R7-MhI"/>
+                                    <segue destination="Lhd-Io-hFw" kind="push" identifier="DetailName" id="TOX-WJ-zmK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,6 +59,78 @@
             </objects>
             <point key="canvasLocation" x="472" y="71"/>
         </scene>
+        <!--Baby Names Detail View Controller-->
+        <scene sceneID="qTT-mA-bmz">
+            <objects>
+                <viewController id="Lhd-Io-hFw" customClass="BabyNamesDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pju-7F-ElC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g41-1p-qUH">
+                                <rect key="frame" x="30" y="75" width="270" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NlF-qw-TEF"/>
+                                    <constraint firstAttribute="width" constant="270" id="TSj-gX-3eT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0Q-AZ-3tp">
+                                <rect key="frame" x="30" y="209" width="100" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="LNl-b9-h91"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Vote">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="896-U7-Pjq">
+                                <rect key="frame" x="200" y="209" width="100" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="fgP-iP-VyG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Z8z-LQ-WS9" kind="modal" identifier="UpdateName" id="5Ot-Q8-Ib0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="896-U7-Pjq" firstAttribute="baseline" secondItem="f0Q-AZ-3tp" secondAttribute="baseline" type="default" id="Eq8-dy-Gak"/>
+                            <constraint firstItem="896-U7-Pjq" firstAttribute="trailing" secondItem="g41-1p-qUH" secondAttribute="trailing" type="default" id="ILj-RJ-Nk4"/>
+                            <constraint firstItem="f0Q-AZ-3tp" firstAttribute="leading" secondItem="g41-1p-qUH" secondAttribute="leading" type="default" id="PU6-07-pSw"/>
+                            <constraint firstItem="f0Q-AZ-3tp" firstAttribute="top" secondItem="Pju-7F-ElC" secondAttribute="top" constant="209" id="oTD-Pb-2yj"/>
+                            <constraint firstItem="g41-1p-qUH" firstAttribute="top" secondItem="Pju-7F-ElC" secondAttribute="top" constant="75" id="rsM-wv-zfP"/>
+                            <constraint firstAttribute="trailing" secondItem="g41-1p-qUH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vKT-pj-dwu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s75-fP-saq"/>
+                    <connections>
+                        <outlet property="title" destination="g41-1p-qUH" id="ysg-iY-q4e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9F-Z6-Chf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="-779"/>
+        </scene>
         <!--Baby Names Form View Controller-->
         <scene sceneID="lRf-0h-aoN">
             <objects>
@@ -67,7 +139,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwf-u3-dgs">
+                            <navigationBar contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="qwf-u3-dgs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Edit" id="cGd-y5-qUW">
@@ -176,6 +248,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EqQ-R7-MhI"/>
+        <segue reference="5Ot-Q8-Ib0"/>
     </inferredMetricsTieBreakers>
 </document>
