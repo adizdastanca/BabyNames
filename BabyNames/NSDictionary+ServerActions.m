@@ -11,7 +11,7 @@
 
 @implementation NSDictionary (ServerActions)
 
--(NSDictionary *) getResults
+-(NSDictionary *) getResults:(NSManagedObject *)databaseRecord
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://mas-web.co.uk/webservices/user.php?user=adrian" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
