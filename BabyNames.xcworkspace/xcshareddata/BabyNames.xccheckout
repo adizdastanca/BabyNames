@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7A2D1904-A254-418D-AFF6-94ED20390688</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BabyNames</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4A9C30DC-084C-4425-BC75-A71D1D249300</key>
+		<string>https://github.com/adizdastanca/BabyNames.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BabyNames.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4A9C30DC-084C-4425-BC75-A71D1D249300</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/adizdastanca/BabyNames.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4A9C30DC-084C-4425-BC75-A71D1D249300</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4A9C30DC-084C-4425-BC75-A71D1D249300</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BabyNames</string>
+		</dict>
+	</array>
+</dict>
+</plist>

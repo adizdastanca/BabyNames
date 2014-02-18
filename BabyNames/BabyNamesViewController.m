@@ -9,6 +9,7 @@
 #import "BabyNamesViewController.h"
 #import "BabyNamesFormViewController.h"
 #import "BabyNamesDetailViewController.h"
+#import "NSDictionary+ServerActions.h"
 
 @interface BabyNamesViewController ()
 
@@ -65,6 +66,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    //connect to live database and try to sync
+    NSDictionary *myLiveResults = [[NSDictionary alloc] init];
+    [myLiveResults getResults];
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

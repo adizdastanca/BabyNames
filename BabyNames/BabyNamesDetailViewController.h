@@ -10,8 +10,13 @@
 
 @interface BabyNamesDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *title;
+- (IBAction)voteButton:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameTitle;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfVotes;
+
 
 @property (strong) NSManagedObject *detailName;
+
 
 @end

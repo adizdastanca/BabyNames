@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TfE-9C-SRc">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -81,6 +81,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0Q-AZ-3tp">
                                 <rect key="frame" x="30" y="209" width="100" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="LNl-b9-h91"/>
                                 </constraints>
@@ -92,10 +93,14 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="voteButton:" destination="Lhd-Io-hFw" eventType="touchUpInside" id="P9W-9J-FPt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="896-U7-Pjq">
                                 <rect key="frame" x="200" y="209" width="100" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="fgP-iP-VyG"/>
                                 </constraints>
@@ -111,20 +116,47 @@
                                     <segue destination="Z8z-LQ-WS9" kind="modal" identifier="UpdateName" id="5Ot-Q8-Ib0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVK-ra-XdX">
+                                <rect key="frame" x="30" y="104" width="57" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="4VP-7S-efK"/>
+                                    <constraint firstAttribute="height" constant="41" id="ZXy-Qa-zhr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYI-LO-AFg">
+                                <rect key="frame" x="95" y="114" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="YSX-1G-MFF"/>
+                                    <constraint firstAttribute="width" constant="42" id="pLA-NZ-Vwt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="896-U7-Pjq" firstAttribute="baseline" secondItem="f0Q-AZ-3tp" secondAttribute="baseline" type="default" id="Eq8-dy-Gak"/>
+                            <constraint firstItem="TYI-LO-AFg" firstAttribute="centerY" secondItem="qVK-ra-XdX" secondAttribute="centerY" type="default" id="6hT-6h-N9I"/>
+                            <constraint firstItem="896-U7-Pjq" firstAttribute="baseline" secondItem="f0Q-AZ-3tp" secondAttribute="baseline" type="user" id="Eq8-dy-Gak"/>
                             <constraint firstItem="896-U7-Pjq" firstAttribute="trailing" secondItem="g41-1p-qUH" secondAttribute="trailing" type="default" id="ILj-RJ-Nk4"/>
-                            <constraint firstItem="f0Q-AZ-3tp" firstAttribute="leading" secondItem="g41-1p-qUH" secondAttribute="leading" type="default" id="PU6-07-pSw"/>
+                            <constraint firstItem="TYI-LO-AFg" firstAttribute="leading" secondItem="qVK-ra-XdX" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aS6-Xu-LPs"/>
+                            <constraint firstItem="qVK-ra-XdX" firstAttribute="leading" secondItem="g41-1p-qUH" secondAttribute="leading" type="default" id="hGh-sH-AIA"/>
+                            <constraint firstItem="qVK-ra-XdX" firstAttribute="leading" secondItem="f0Q-AZ-3tp" secondAttribute="leading" type="default" id="njT-L0-seo"/>
                             <constraint firstItem="f0Q-AZ-3tp" firstAttribute="top" secondItem="Pju-7F-ElC" secondAttribute="top" constant="209" id="oTD-Pb-2yj"/>
                             <constraint firstItem="g41-1p-qUH" firstAttribute="top" secondItem="Pju-7F-ElC" secondAttribute="top" constant="75" id="rsM-wv-zfP"/>
+                            <constraint firstItem="qVK-ra-XdX" firstAttribute="top" secondItem="g41-1p-qUH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="s6a-X5-9Oj"/>
                             <constraint firstAttribute="trailing" secondItem="g41-1p-qUH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vKT-pj-dwu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s75-fP-saq"/>
                     <connections>
-                        <outlet property="title" destination="g41-1p-qUH" id="ysg-iY-q4e"/>
+                        <outlet property="nameTitle" destination="g41-1p-qUH" id="UtF-vw-Upx"/>
+                        <outlet property="numberOfVotes" destination="TYI-LO-AFg" id="vVY-16-452"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9F-Z6-Chf" userLabel="First Responder" sceneMemberID="firstResponder"/>

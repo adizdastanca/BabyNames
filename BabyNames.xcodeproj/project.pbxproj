@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21C079B48A1249349C976DF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561CFC7D87444C2914DE3A6 /* libPods.a */; };
+		FC00386E18B338B00081BE7D /* NSDictionary+ServerActions.m in Sources */ = {isa = PBXBuildFile; fileRef = FC00386D18B338B00081BE7D /* NSDictionary+ServerActions.m */; };
 		FC1D60C518A9635A00A0BAB3 /* Splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1D60C418A9635A00A0BAB3 /* Splash@2x.png */; };
 		FC1D60C718A9636400A0BAB3 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1D60C618A9636400A0BAB3 /* Splash.png */; };
 		FC3C442018A435F90009FADE /* BabyNamesFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3C441F18A435F90009FADE /* BabyNamesFormViewController.m */; };
@@ -28,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22917C0EE5D74F869456C9EB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6561CFC7D87444C2914DE3A6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC00386C18B338B00081BE7D /* NSDictionary+ServerActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ServerActions.h"; sourceTree = "<group>"; };
+		FC00386D18B338B00081BE7D /* NSDictionary+ServerActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ServerActions.m"; sourceTree = "<group>"; };
 		FC1D60C418A9635A00A0BAB3 /* Splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash@2x.png"; sourceTree = "<group>"; };
 		FC1D60C618A9636400A0BAB3 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		FC3C441E18A435F80009FADE /* BabyNamesFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyNamesFormViewController.h; sourceTree = "<group>"; };
@@ -65,18 +71,31 @@
 				FC42D12318A4025C0020CBB7 /* Foundation.framework in Frameworks */,
 				FC42D12518A4025C0020CBB7 /* CoreGraphics.framework in Frameworks */,
 				FC42D12718A4025C0020CBB7 /* CoreData.framework in Frameworks */,
+				21C079B48A1249349C976DF8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC00386F18B338C50081BE7D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FC00386C18B338B00081BE7D /* NSDictionary+ServerActions.h */,
+				FC00386D18B338B00081BE7D /* NSDictionary+ServerActions.m */,
+				FC60AEA918A5456F00F775C0 /* NSDictionary+ParseJson.h */,
+				FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		FC42D11418A4025C0020CBB7 = {
 			isa = PBXGroup;
 			children = (
 				FC42D12818A4025C0020CBB7 /* BabyNames */,
 				FC42D11F18A4025C0020CBB7 /* Frameworks */,
 				FC42D11E18A4025C0020CBB7 /* Products */,
+				22917C0EE5D74F869456C9EB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +114,7 @@
 				FC42D12218A4025C0020CBB7 /* Foundation.framework */,
 				FC42D12418A4025C0020CBB7 /* CoreGraphics.framework */,
 				FC42D12618A4025C0020CBB7 /* CoreData.framework */,
+				6561CFC7D87444C2914DE3A6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,8 +128,7 @@
 				FC42D13A18A4025C0020CBB7 /* BabyNames.xcdatamodeld */,
 				FC42D14218A403350020CBB7 /* Storyboard.storyboard */,
 				FC42D12918A4025C0020CBB7 /* Supporting Files */,
-				FC60AEA918A5456F00F775C0 /* NSDictionary+ParseJson.h */,
-				FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */,
+				FC00386F18B338C50081BE7D /* Categories */,
 			);
 			path = BabyNames;
 			sourceTree = "<group>";
@@ -150,9 +169,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC42D13F18A4025C0020CBB7 /* Build configuration list for PBXNativeTarget "BabyNames" */;
 			buildPhases = (
+				987DD8AD58A54EB398158AFC /* Check Pods Manifest.lock */,
 				FC42D11918A4025C0020CBB7 /* Sources */,
 				FC42D11A18A4025C0020CBB7 /* Frameworks */,
 				FC42D11B18A4025C0020CBB7 /* Resources */,
+				7D5571FCDDF145CE83E92E82 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,12 +232,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7D5571FCDDF145CE83E92E82 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		987DD8AD58A54EB398158AFC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC42D11918A4025C0020CBB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FC42D12F18A4025C0020CBB7 /* main.m in Sources */,
+				FC00386E18B338B00081BE7D /* NSDictionary+ServerActions.m in Sources */,
 				FC43E01518AAB1E6005F6B87 /* BabyNamesDetailViewController.m in Sources */,
 				FC42D13318A4025C0020CBB7 /* AppDelegate.m in Sources */,
 				FC60AEAB18A5456F00F775C0 /* NSDictionary+ParseJson.m in Sources */,
@@ -265,7 +320,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -289,7 +344,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -298,12 +353,14 @@
 		};
 		FC42D14018A4025C0020CBB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22917C0EE5D74F869456C9EB /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BabyNames/BabyNames-Prefix.pch";
 				INFOPLIST_FILE = "BabyNames/BabyNames-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -312,12 +369,14 @@
 		};
 		FC42D14118A4025C0020CBB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22917C0EE5D74F869456C9EB /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BabyNames/BabyNames-Prefix.pch";
 				INFOPLIST_FILE = "BabyNames/BabyNames-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
