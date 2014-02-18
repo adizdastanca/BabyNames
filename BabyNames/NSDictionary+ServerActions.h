@@ -12,6 +12,6 @@
 
 -(NSDictionary *) getNumberOfVotes;
 -(NSDictionary *) getResults;
-//-(NSDictionary *) save
+-(NSDictionary *) getResults:(NSManagedObject *)databaseRecord;
 
 @end

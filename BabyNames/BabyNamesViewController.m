@@ -69,8 +69,11 @@
     
     
     //connect to live database and try to sync
+    NSManagedObjectContext *context = [self managedObjectContext];
+
+    NSManagedObject *newName = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:context];
     NSDictionary *myLiveResults = [[NSDictionary alloc] init];
-    [myLiveResults getResults];
+    [myLiveResults getResults:newName];
 
 
     // Uncomment the following line to preserve selection between presentations.
