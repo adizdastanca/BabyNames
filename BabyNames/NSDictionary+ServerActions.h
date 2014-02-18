@@ -10,6 +10,7 @@
 
 @interface NSDictionary (ServerActions)
 
+-(NSDictionary *) getNumberOfVotes;
 -(NSDictionary *) getResults;
 //-(NSDictionary *) save
 

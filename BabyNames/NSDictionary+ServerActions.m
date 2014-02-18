@@ -11,6 +11,11 @@
 
 @implementation NSDictionary (ServerActions)
 
+-(NSDictionary *) getNumberOfVotes
+{
+    NSDictionary *votes = [self getResults];
+    return [votes objectForKey:@"users"];
+}
 -(NSDictionary *) getResults
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
