@@ -11,21 +11,19 @@
 
 @implementation NSDictionary (ServerActions)
 
--(NSDictionary *) getResults:(NSManagedObject *)databaseRecord
+-(NSDictionary *)getResults:(NSManagedObject *)databaseRecord :(NSManagedObjectContext *)context
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://mas-web.co.uk/webservices/user.php?user=adrian" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        
-        NSLog(@"JSON: %@", responseObject);
+        [self clearLocalDatabase:@"People" :context];
         NSArray *results = [responseObject valueForKey:@"users"];
-        NSLog(@"ARRAY: %@", results);
-        NSLog(@"%d", [results count]);
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *item = [results objectAtIndex:i];
-            NSString *first_name = [self getFirstName:item];
-            NSLog(@"%@", first_name);
+            [self saveNewRecord:databaseRecord :item :context];
         }
+        
+        
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -35,15 +33,68 @@
     return nil;
 }
 
--(NSDictionary *) getFirstName:(NSDictionary *)jsonObject
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"observe here");
+//    if ([keyPath isEqual:@"latitude"]) {
+//        self.latitude.text=[[self.person valueForKey:@"latitude"] stringValue];
+//    }
+}
+
+-(NSString *) getFirstName:(NSDictionary *)jsonObject
 {
     return [jsonObject valueForKey:@"first_name"];
 }
--(void) saveNewRecord :(NSManagedObject *)databaseRecord :(NSDictionary *)newItem
+-(NSString *) getMiddleName:(NSDictionary *)jsonObject
 {
-//    [newName setValue:self.first_nameTextField.text forKey:@"first_name"];
-//    [newName setValue:self.middle_nameTextField.text forKey:@"middle_name"];
-//    [newName setValue:self.last_nameTextField.text forKey:@"last_name"];
+    return [jsonObject valueForKey:@"middle_name"];
+}
+-(NSString *) getLastName:(NSDictionary *)jsonObject
+{
+    return [jsonObject valueForKey:@"last_name"];
+}
+-(NSNumber *) getNoOfVotes:(NSDictionary *)jsonObject
+{
+    NSString *numberofVotes = [jsonObject valueForKey:@"number_of_votes"];
+    return [NSNumber numberWithInt:[numberofVotes intValue]];
+}
+-(void) saveNewRecord :(NSManagedObject *)databaseRecord :(NSDictionary *)newItem :(NSManagedObjectContext *)context
+{
+    [databaseRecord setValue:[self getFirstName:newItem] forKey:@"first_name"];
+    [databaseRecord setValue:[self getMiddleName:newItem] forKey:@"middle_name"];
+    [databaseRecord setValue:[self getLastName:newItem] forKey:@"last_name"];
+    [databaseRecord setValue:[self getNoOfVotes:newItem] forKey:@"votes"];
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    NSLog(@"SAVED!!!");
+
+}
+-(void) clearLocalDatabase :(NSString *)entityDescription :(NSManagedObjectContext *)context
+{
+    NSLog(@"CLEAR DATABASE");
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
+    
+    if ([items count]) {
+        for (NSManagedObject *managedObject in items) {
+            [context deleteObject:managedObject];
+            NSLog(@"%@ object deleted",entityDescription);
+        }
+        if (![context save:&error]) {
+            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }
+
+    }
+
 }
 
 @end

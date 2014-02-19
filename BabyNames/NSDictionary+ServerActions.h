@@ -10,8 +10,6 @@
 
 @interface NSDictionary (ServerActions)
 
--(NSDictionary *) getNumberOfVotes;
--(NSDictionary *) getResults;
--(NSDictionary *) getResults:(NSManagedObject *)databaseRecord;
+-(NSDictionary *) getResults :(NSManagedObject *)databaseRecord :(NSManagedObjectContext *)context;
 
 @end
