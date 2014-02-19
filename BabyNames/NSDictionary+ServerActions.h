@@ -10,6 +10,6 @@
 
 @interface NSDictionary (ServerActions)
 
--(NSDictionary *) getResults :(NSManagedObject *)databaseRecord :(NSManagedObjectContext *)context;
+-(NSDictionary *) getResults :(NSManagedObject *)databaseRecord;
 
 @end
