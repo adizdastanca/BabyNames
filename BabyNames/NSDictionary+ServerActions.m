@@ -16,6 +16,8 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://mas-web.co.uk/webservices/user.php?user=adrian" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
+        
+        
         [self clearLocalDatabase:@"People" :context];
         NSArray *results = [responseObject valueForKey:@"users"];
         for (int i = 0; i < [results count]; i++) {
@@ -23,9 +25,24 @@
             [self saveNewRecord:databaseRecord :item :context];
         }
         
+        [self saveOnServer];
         
         
         
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    return nil;
+}
+
+-(NSDictionary *)saveOnServer
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"votes": @"100", @"user_id": @"1"};
+    [manager POST:@"http://mas-web.co.uk/webservices/user.php?user=adrian" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -41,29 +58,29 @@
 //    }
 }
 
--(NSString *) getFirstName:(NSDictionary *)jsonObject
+-(NSString *) firstName:(NSDictionary *)jsonObject
 {
     return [jsonObject valueForKey:@"first_name"];
 }
--(NSString *) getMiddleName:(NSDictionary *)jsonObject
+-(NSString *) middleName:(NSDictionary *)jsonObject
 {
     return [jsonObject valueForKey:@"middle_name"];
 }
--(NSString *) getLastName:(NSDictionary *)jsonObject
+-(NSString *) lastName:(NSDictionary *)jsonObject
 {
     return [jsonObject valueForKey:@"last_name"];
 }
--(NSNumber *) getNoOfVotes:(NSDictionary *)jsonObject
+-(NSNumber *) noOfVotes:(NSDictionary *)jsonObject
 {
     NSString *numberofVotes = [jsonObject valueForKey:@"number_of_votes"];
     return [NSNumber numberWithInt:[numberofVotes intValue]];
 }
 -(void) saveNewRecord :(NSManagedObject *)databaseRecord :(NSDictionary *)newItem :(NSManagedObjectContext *)context
 {
-    [databaseRecord setValue:[self getFirstName:newItem] forKey:@"first_name"];
-    [databaseRecord setValue:[self getMiddleName:newItem] forKey:@"middle_name"];
-    [databaseRecord setValue:[self getLastName:newItem] forKey:@"last_name"];
-    [databaseRecord setValue:[self getNoOfVotes:newItem] forKey:@"votes"];
+    [databaseRecord setValue:[self firstName:newItem] forKey:@"first_name"];
+    [databaseRecord setValue:[self middleName:newItem] forKey:@"middle_name"];
+    [databaseRecord setValue:[self lastName:newItem] forKey:@"last_name"];
+    [databaseRecord setValue:[self noOfVotes:newItem] forKey:@"votes"];
     
     NSError *error = nil;
     // Save the object to persistent store

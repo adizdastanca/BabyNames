@@ -12,4 +12,6 @@
 
 -(NSDictionary *) getResults :(NSManagedObject *)databaseRecord :(NSManagedObjectContext *)context;
 
+-(NSDictionary *) saveOnServer;
+
 @end
