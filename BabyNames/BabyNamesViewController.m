@@ -73,7 +73,7 @@
 
     NSManagedObject *newName = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:context];
     NSDictionary *myLiveResults = [[NSDictionary alloc] init];
-    [myLiveResults getResults:newName :context];
+    [myLiveResults getResults:newName];
 
 
     // Uncomment the following line to preserve selection between presentations.
