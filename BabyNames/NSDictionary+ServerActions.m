@@ -93,6 +93,13 @@
     [databaseRecord setValue:[self lastName:newItem] forKey:@"last_name"];
     [databaseRecord setValue:[self noOfVotes:newItem] forKey:@"votes"];
     
+    /*
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    
+    [databaseRecord setValue:dateFormatter forKey:@"updated_at"];
+     */
+    
     NSError *error = nil;
     // Save the object to persistent store
     if (![newContext save:&error]) {
