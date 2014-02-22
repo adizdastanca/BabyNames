@@ -11,5 +11,7 @@
 @interface BabyNamesViewController : UITableViewController
 
 //here
+-(void) displayNamesList;
+
 
 @end

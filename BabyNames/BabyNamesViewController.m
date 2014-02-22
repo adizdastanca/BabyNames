@@ -17,7 +17,20 @@
 
 @end
 
+static BOOL syncResults = TRUE;
+
 @implementation BabyNamesViewController
+
+//getter and setter for syncResults variable
++(BOOL) syncResults
+{
+    return syncResults;
+}
++(void) setSyncResults :(BOOL) isSynced
+{
+    syncResults = isSynced;
+}
+
 
 - (NSManagedObjectContext *)managedObjectContext
 {
@@ -43,7 +56,13 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
+    [self displayNamesList];
+}
+
+-(void)displayNamesList
+{
+
     // Fetch the devices from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"People"];
@@ -51,7 +70,6 @@
     
     [self.tableView reloadData];
 }
-
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -68,12 +86,13 @@
     [super viewDidLoad];
     
     
-    //connect to live database and try to sync
-    NSManagedObjectContext *context = [self managedObjectContext];
-
-    NSManagedObject *newName = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:context];
-    NSDictionary *myLiveResults = [[NSDictionary alloc] init];
-    [myLiveResults getResults:newName];
+    if (syncResults) {
+        //connect to live database and try to sync
+        NSDictionary *myLiveResults = [[NSDictionary alloc] init];
+        [myLiveResults getResults];
+        NSLog(@"%hhd", syncResults);
+        syncResults = FALSE;
+    }
 
 
     // Uncomment the following line to preserve selection between presentations.

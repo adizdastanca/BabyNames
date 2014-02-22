@@ -8,6 +8,7 @@
 
 #import "NSDictionary+ServerActions.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "BabyNamesViewController.h"
 
 @implementation NSDictionary (ServerActions)
 
@@ -21,7 +22,7 @@
     return context;
 }
 
--(NSDictionary *)getResults:(NSManagedObject *)databaseRecord
+-(NSDictionary *)getResults
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://mas-web.co.uk/webservices/user.php?user=adrian" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -33,10 +34,12 @@
         NSArray *results = [responseObject valueForKey:@"users"];
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *item = [results objectAtIndex:i];
-            [self saveNewRecord:databaseRecord :item];
+            [self saveNewRecord :item];
         }
         
-        [self saveOnServer];
+//        [self saveOnServer];
+        [self populateNamesList];
+        NSLog(@"getResuts METHOD");
         
         
         
@@ -85,9 +88,12 @@
     NSString *numberofVotes = [jsonObject valueForKey:@"number_of_votes"];
     return [NSNumber numberWithInt:[numberofVotes intValue]];
 }
--(void) saveNewRecord :(NSManagedObject *)databaseRecord :(NSDictionary *)newItem
+-(void) saveNewRecord :(NSDictionary *)newItem
 {
     NSManagedObjectContext *newContext = [self managedObjectContext];
+    NSManagedObject *databaseRecord = [NSEntityDescription insertNewObjectForEntityForName:@"People"
+                                                                    inManagedObjectContext:newContext];
+    
     [databaseRecord setValue:[self firstName:newItem] forKey:@"first_name"];
     [databaseRecord setValue:[self middleName:newItem] forKey:@"middle_name"];
     [databaseRecord setValue:[self lastName:newItem] forKey:@"last_name"];
@@ -132,6 +138,12 @@
 
     }
 
+}
+
+-(void) populateNamesList
+{
+    BabyNamesViewController *myNamesList = [[BabyNamesViewController alloc] init];
+    [myNamesList displayNamesList];
 }
 
 @end

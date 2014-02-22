@@ -10,7 +10,7 @@
 
 @interface NSDictionary (ServerActions)
 
--(NSDictionary *) getResults :(NSManagedObject *)databaseRecord;
+-(NSDictionary *) getResults;
 
 -(NSDictionary *) saveOnServer;
 
