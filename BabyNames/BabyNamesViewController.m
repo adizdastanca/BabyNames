@@ -58,6 +58,9 @@ static BOOL syncResults = TRUE;
     [super viewDidAppear:animated];
 
     [self displayNamesList];
+    
+    NSLog(@"NAMES: ");
+    NSLog(@"%@", self.names);
 }
 
 -(void)displayNamesList
@@ -91,6 +94,7 @@ static BOOL syncResults = TRUE;
         NSDictionary *myLiveResults = [[NSDictionary alloc] init];
         [myLiveResults getResults];
         NSLog(@"%hhd", syncResults);
+        
         syncResults = FALSE;
     }
 

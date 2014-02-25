@@ -27,6 +27,7 @@
 		FC42D14618A40C670020CBB7 /* BabyNamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC42D14518A40C670020CBB7 /* BabyNamesViewController.m */; };
 		FC43E01518AAB1E6005F6B87 /* BabyNamesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC43E01418AAB1E6005F6B87 /* BabyNamesDetailViewController.m */; };
 		FC60AEAB18A5456F00F775C0 /* NSDictionary+ParseJson.m in Sources */ = {isa = PBXBuildFile; fileRef = FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */; };
+		FCD756F318BC74A700C17BD3 /* Splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD756F218BC74A700C17BD3 /* Splash-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		FC43E01418AAB1E6005F6B87 /* BabyNamesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyNamesDetailViewController.m; sourceTree = "<group>"; };
 		FC60AEA918A5456F00F775C0 /* NSDictionary+ParseJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ParseJson.h"; sourceTree = "<group>"; };
 		FC60AEAA18A5456F00F775C0 /* NSDictionary+ParseJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ParseJson.m"; sourceTree = "<group>"; };
+		FCD756F218BC74A700C17BD3 /* Splash-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Splash-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		FC42D12918A4025C0020CBB7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FCD756F218BC74A700C17BD3 /* Splash-568h@2x.png */,
 				FC1D60C618A9636400A0BAB3 /* Splash.png */,
 				FC1D60C418A9635A00A0BAB3 /* Splash@2x.png */,
 				FC42D12A18A4025C0020CBB7 /* BabyNames-Info.plist */,
@@ -222,6 +225,7 @@
 			files = (
 				FC42D12D18A4025C0020CBB7 /* InfoPlist.strings in Resources */,
 				FC42D13518A4025C0020CBB7 /* Default.png in Resources */,
+				FCD756F318BC74A700C17BD3 /* Splash-568h@2x.png in Resources */,
 				FC42D13718A4025C0020CBB7 /* Default@2x.png in Resources */,
 				FC1D60C718A9636400A0BAB3 /* Splash.png in Resources */,
 				FC1D60C518A9635A00A0BAB3 /* Splash@2x.png in Resources */,
