@@ -29,8 +29,19 @@
 
         
         NSLog(@"%@", responseObject);
-//        NSManagedObjectContext *newContext = [self managedObjectContext];
-        [self clearLocalDatabase:@"People"];
+//        [self clearLocalDatabase:@"People"];
+        
+        NSManagedObjectContext *newContext = [self managedObjectContext];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"People"];
+        NSArray *databaseNames = [[newContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+        
+        NSLog(@"databaseNames");
+        for (int i = 0; i < [databaseNames count]; i++) {
+            NSDictionary *dbRecord = [databaseNames objectAtIndex:i];
+            NSLog(@"%@", [dbRecord valueForKey:@"first_name"]);
+        }
+        
+
         NSArray *results = [responseObject valueForKey:@"users"];
         for (int i = 0; i < [results count]; i++) {
             NSDictionary *item = [results objectAtIndex:i];
