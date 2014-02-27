@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameTitle;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfVotes;
 
+@property (weak, nonatomic) IBOutlet UIButton *detailVoteButton;
+
 
 @property (strong) NSManagedObject *detailName;
 

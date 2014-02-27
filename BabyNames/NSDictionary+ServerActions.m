@@ -99,6 +99,11 @@
     NSString *numberofVotes = [jsonObject valueForKey:@"number_of_votes"];
     return [NSNumber numberWithInt:[numberofVotes intValue]];
 }
+-(NSNumber *) userId:(NSDictionary *)jsonObject
+{
+    NSString *uId = [jsonObject valueForKey:@"id"];
+    return [NSNumber numberWithInt:[uId intValue]];
+}
 -(void) saveNewRecord :(NSDictionary *)newItem
 {
     NSManagedObjectContext *newContext = [self managedObjectContext];
@@ -109,6 +114,7 @@
     [databaseRecord setValue:[self middleName:newItem] forKey:@"middle_name"];
     [databaseRecord setValue:[self lastName:newItem] forKey:@"last_name"];
     [databaseRecord setValue:[self noOfVotes:newItem] forKey:@"votes"];
+    [databaseRecord setValue:[self userId:newItem] forKey:@"user_id"];
     
     /*
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

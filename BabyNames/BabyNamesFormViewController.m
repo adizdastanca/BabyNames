@@ -40,14 +40,13 @@
     NSLog(@"save pressed:");
 //    NSManagedObjectContext *context = [self managedObjectContext];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    NSDate *now = [[NSDate alloc] init];
     
     if (self.editName) {
         [self.editName setValue:self.first_nameTextField.text forKey:@"first_name"];
         [self.editName setValue:self.middle_nameTextField.text forKey:@"middle_name"];
         [self.editName setValue:self.last_nameTextField.text forKey:@"last_name"];
-        [self.editName setValue:dateFormatter forKey:@"updated_at"];
+        [self.editName setValue:now forKey:@"updated_at"];
 
     } else {
         // Create a new managed object
@@ -55,7 +54,7 @@
         [newName setValue:self.first_nameTextField.text forKey:@"first_name"];
         [newName setValue:self.middle_nameTextField.text forKey:@"middle_name"];
         [newName setValue:self.last_nameTextField.text forKey:@"last_name"];
-        [newName setValue:dateFormatter forKey:@"updated_at"];
+        [newName setValue:now forKey:@"updated_at"];
     }
     
     

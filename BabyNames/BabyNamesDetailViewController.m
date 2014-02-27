@@ -56,6 +56,8 @@
                          [self.detailName valueForKey:@"middle_name"],
                          [self.detailName valueForKey:@"last_name"]]];
 
+    
+    
     [self.numberOfVotes setText:[NSString stringWithFormat:@"%@",
                                  [self.detailName valueForKey:@"votes"]]];
 }
@@ -65,9 +67,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     if (self.detailName) {
+        
+        [self hideVoteButtonOnceVoted];
+        
         NSLog(@"%@", [self.detailName valueForKey:@"first_name"]);
         NSLog(@"%@", [self.detailName valueForKey:@"middle_name"]);
         NSLog(@"%@", [self.detailName valueForKey:@"last_name"]);
+        NSLog(@"%@", [self.detailName valueForKey:@"updated_at"]);
+        NSLog(@"%@", [self.detailName valueForKey:@"user_id"]);
+        NSLog(@"%@", [self.detailName valueForKey:@"old_votes"]);
+        NSLog(@"%@", [self.detailName valueForKey:@"votes"]);
         
         [self.nameTitle setText:[NSString stringWithFormat:@"%@ %@ %@",
                              [self.detailName valueForKey:@"first_name"],
@@ -86,16 +95,22 @@
 
 - (IBAction)voteButton:(UIButton *)sender
 {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
     NSString *noVotes = [self.detailName valueForKey:@"votes"];
-
     int myVotes = [noVotes intValue];
     myVotes = myVotes + 1;
     
-    //save to database
+    //save vote to local db
     id votesConvertedFromIntToId = [NSNumber numberWithInteger:myVotes];
     [self.detailName setValue:votesConvertedFromIntToId forKey:@"votes"];
     
-    NSManagedObjectContext *context = [self managedObjectContext];
+    //save updated_At to local db
+    NSDate *now = [[NSDate alloc] init];
+    [self.detailName setValue:now forKey:@"updated_at"];
+    
+    [self.detailName setValue:[NSNumber numberWithBool:YES] forKey:@"already_voted"];
+    
     
     NSError *error = nil;
     if (![context save:&error]) {
@@ -105,5 +120,23 @@
     
     [self.numberOfVotes setText:[NSString stringWithFormat:@"%d", myVotes]];
     
+    [self hideVoteButtonOnceVoted];
+    
+}
+
+-(void) hideVoteButtonOnceVoted
+{
+    
+    NSString *alreadyVotedString = [self.detailName valueForKey:@"already_voted"];
+    BOOL alreadyVoted = [alreadyVotedString boolValue];
+    
+    NSLog(@"%hhd", alreadyVoted);
+    
+    if (alreadyVoted) {
+        self.detailVoteButton.hidden = YES;
+    } else {
+        self.detailVoteButton.hidden = NO;
+    }
+
 }
 @end

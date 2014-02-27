@@ -146,6 +146,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="s75-fP-saq"/>
                     <connections>
+                        <outlet property="detailVoteButton" destination="f0Q-AZ-3tp" id="W3k-Ag-nO2"/>
                         <outlet property="nameTitle" destination="g41-1p-qUH" id="UtF-vw-Upx"/>
                         <outlet property="numberOfVotes" destination="TYI-LO-AFg" id="vVY-16-452"/>
                     </connections>

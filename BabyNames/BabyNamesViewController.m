@@ -58,9 +58,6 @@ static BOOL syncResults = TRUE;
     [super viewDidAppear:animated];
 
     [self displayNamesList];
-    
-    NSLog(@"NAMES: ");
-    NSLog(@"%@", self.names);
 }
 
 -(void)displayNamesList
