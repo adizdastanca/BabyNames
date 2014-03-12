@@ -29,7 +29,7 @@
 
         
         NSLog(@"%@", responseObject);
-//        [self clearLocalDatabase:@"People"];
+        [self clearLocalDatabase:@"People"];
         
         NSManagedObjectContext *newContext = [self managedObjectContext];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"People"];
@@ -47,8 +47,10 @@
             NSDictionary *item = [results objectAtIndex:i];
             [self saveNewRecord :item];
         }
+ 
+//        NSDictionary *parameters = @{@"votes": @"100", @"user_id": @"1"};
+//        [self saveOnServer:parameters];
         
-//        [self saveOnServer];
         [self populateNamesList];
         NSLog(@"getResuts METHOD");
         
@@ -61,10 +63,10 @@
     return nil;
 }
 
--(NSDictionary *)saveOnServer
+-(NSDictionary *)saveOnServer: (NSDictionary *)parameters
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"votes": @"100", @"user_id": @"1"};
+    
     [manager POST:@"http://mas-web.co.uk/webservices/user.php?user=adrian" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -122,6 +124,7 @@
     
     [databaseRecord setValue:dateFormatter forKey:@"updated_at"];
      */
+    
     
     NSError *error = nil;
     // Save the object to persistent store
