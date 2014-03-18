@@ -30,15 +30,16 @@
     return context;
 }
 
-- (IBAction)cancel:(UIBarButtonItem *)sender
+- (IBAction)cancelButton:(UIButton *)sender
 {
-    NSLog(@"cancel pressed:");
+    NSLog(@"cancel button");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-- (IBAction)save:(UIBarButtonItem *)sender
+
+- (IBAction)saveButton:(UIButton *)sender
 {
     NSLog(@"save pressed:");
-//    NSManagedObjectContext *context = [self managedObjectContext];
+    //    NSManagedObjectContext *context = [self managedObjectContext];
     
     NSDate *now = [[NSDate alloc] init];
     
@@ -47,7 +48,7 @@
         [self.editName setValue:self.middle_nameTextField.text forKey:@"middle_name"];
         [self.editName setValue:self.last_nameTextField.text forKey:@"last_name"];
         [self.editName setValue:now forKey:@"updated_at"];
-
+        
     } else {
         // Create a new managed object
         NSManagedObject *newName = [NSEntityDescription insertNewObjectForEntityForName:@"People" inManagedObjectContext:self.context];
@@ -62,41 +63,41 @@
     
     //work with webservice
     /*
-    [self.context save:nil];
-    
-    //populate latitude and longitude
-    NSManagedObjectID *mid = [self.person objectID];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Now I am on a different thread
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
-        context.persistentStoreCoordinator = [appDelegate persistentStoreCoordinator];
-        NSLog(@"test");
-        
-        
-        
-        NSURL *url = [[NSURL alloc] initWithString:@"https://maps.googleapis.com/maps/api/geocode/json?address=london&sensor=false"];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        //NSLog(@"%@", json);
-        
-        
-        NSNumber *myLatitude = [json giveMeLatitude];
-        NSNumber *myLongitude = [json giveMeLongitude];
-        
-        
-        NSManagedObject *baby = [context objectWithID:mid];
-        [baby setValue:myLatitude forKey:@"latitude"];
-        [baby setValue:myLongitude forKey:@"longitude"];
-        
-        NSError *error = nil;
-        if (![context save:&error]) {
-            NSLog(@"error: %@", error);
-        }
-        //[context save:nil];
-    });
+     [self.context save:nil];
+     
+     //populate latitude and longitude
+     NSManagedObjectID *mid = [self.person objectID];
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+     // Now I am on a different thread
+     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+     context.persistentStoreCoordinator = [appDelegate persistentStoreCoordinator];
+     NSLog(@"test");
+     
+     
+     
+     NSURL *url = [[NSURL alloc] initWithString:@"https://maps.googleapis.com/maps/api/geocode/json?address=london&sensor=false"];
+     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+     
+     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+     //NSLog(@"%@", json);
+     
+     
+     NSNumber *myLatitude = [json giveMeLatitude];
+     NSNumber *myLongitude = [json giveMeLongitude];
+     
+     
+     NSManagedObject *baby = [context objectWithID:mid];
+     [baby setValue:myLatitude forKey:@"latitude"];
+     [baby setValue:myLongitude forKey:@"longitude"];
+     
+     NSError *error = nil;
+     if (![context save:&error]) {
+     NSLog(@"error: %@", error);
+     }
+     //[context save:nil];
+     });
      */
     
     NSError *error = nil;
@@ -107,7 +108,6 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
-    
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

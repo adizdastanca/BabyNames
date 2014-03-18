@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *middle_nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *last_nameTextField;
 
+- (IBAction)cancelButton:(UIButton *)sender;
+- (IBAction)saveButton:(UIButton *)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *latitude;
 @property (weak, nonatomic) IBOutlet UILabel *longitude;
 
